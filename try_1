@@ -1,0 +1,188 @@
+//
+//  main.cpp
+//  Project_1_problem_1
+//
+//  Created by Matt Onesto on 9/2/14.
+//  Copyright (c) 2014 Matt Onesto. All rights reserved.
+//Professor: Ray Ahmadnia 131
+//program: read in text file,Display Text file, calculate averageAge, calculate AverageGPa, display AverageAge & AverageGpa, display students who scored above AverageAge
+
+//************************************************************
+//Librarys declared
+//************************************************************
+
+#include <iostream>
+#include<string>
+#include<fstream>
+#include<iomanip>
+
+
+using namespace std;
+
+
+//************************************************************
+//Struct combinning to PERSON a[5];
+//************************************************************
+struct PERSON
+
+{
+    string name;
+    int age;
+    float gpa;
+};
+PERSON a[6];
+
+//************************************************************
+//function prototypes, must overload display function three times
+//************************************************************
+//copy data reads in the file and close the file at the end within the function
+void CopyData(string fname,PERSON x[], int n);
+//overload display function three times
+void Display(PERSON x[]);
+void Display(int x[]);
+void Display(float x[]);
+//total AGE
+void AgeAve(PERSON x[], int n);
+//Total GPA
+void GpaAve(PERSON x[], float n);
+//Averages Age & GPA
+void ComputeAverage(PERSON x[], int AgeAve, float GpaAve);
+
+
+//************************************************************
+//main
+//************************************************************
+
+int main(int argc, const char * argv[])
+{
+    CopyData("data.txt",a,6);
+    Display(a);
+    cout<<endl;
+    AgeAve(a, 6);
+    GpaAve(a, 6);
+    //Display(a);
+    //Display(AgeAve);
+   // ComputeAverage(a,AgeAve,GpaAve);
+    //int AgeAve=0;
+    //float GpaAve=0;
+    cout<<endl;
+    return 0;
+}
+
+//************************************************************
+//opening the file from data.txt and running through for loop, and struct x[i].name
+//************************************************************
+
+void CopyData(string fname, PERSON x[], int n) // reading the data in( "data.txt", Person struct, number of files)
+{
+    fstream f;
+    f.open("data.txt",ios::in);
+    {
+        for(int i =0;i<n;i++)
+        {
+            f>>x[i].name>>x[i].age>>x[i].gpa;
+            int totalAge=0;
+            float totalGpa=0;
+            
+           x[i].age+=totalAge;
+            x[i].gpa+=totalGpa;
+            cout<<totalAge;
+            //cout<<" hellow "<<endl;
+            //cout<<totalAge;  // all i get is 00000
+            //cout<<totalGpa; // all i get is  00000
+        }
+    }
+    f.close();
+}
+
+
+//************************************************************
+//display function over loaded 3 times here
+//************************************************************
+void Display(PERSON x[])
+{
+    for(int i =0;i<6;i++)
+    {
+        cout<<setw(15)<<x[i].name<<setw(15)<<x[i].age<<setw(15)<<x[i].gpa<<setw(15)<<endl;;
+    }
+   
+}
+
+
+ 
+ void Display(int AgeAve)
+{
+    cout<<AgeAve;
+    
+}
+
+
+
+//************************************************************
+
+//************************************************************
+/*
+void Display(PERSON x[], int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        cout<<x[i].age;
+    }
+}
+ */
+
+
+
+
+//************************************************************
+//can't get the total to hold any values, just holding 0, 0 , 0 , 0 , 0
+//AgeAve function
+//************************************************************
+
+void AgeAve(PERSON x[], int n)
+{
+   int TotalAge=0;
+    for(int i=0;i<n;i++)
+    {
+        
+        a[i].age+=TotalAge;
+        cout<<TotalAge;
+    }
+    cout<<TotalAge;
+}
+
+
+
+//************************************************************
+//GpaAve function
+//************************************************************
+void GpaAve(PERSON x[], float n)
+{
+    for(int i =0;i<n;i++)
+    {
+        float TotalGpa=0;
+        a[i].gpa+=TotalGpa;
+    }
+}
+
+
+ //************************************************************
+ //ComputeAverage Function
+ //************************************************************
+
+void ComputeAverage( PERSON x[], int AgeAve, float GpaAve)
+{
+    int TotalAge=0;
+    float TotalGpa=0;
+
+    for(int i =0;i<6;i++)
+    {
+        x[i].age+=AgeAve;
+        x[i].gpa+=TotalGpa;
+        cout<<AgeAve;
+        cout<<TotalAge;
+    }
+   
+    
+}
+
